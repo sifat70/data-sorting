@@ -27,18 +27,25 @@ const handleCategoryCard = async (categoryId) => {
 
     const cardContainer = document.getElementById('card-container');
 
-    data.data.forEach((news) => {
+    data.data.forEach((software) => {
         const div = document.createElement('div');
         div.innerHTML = `
         <div  class="card bg-base-100 shadow-xl">
         <figure class="px-10 pt-10">
-                    <img class="h-[200px]" src="${news?.thumbnail}" alt="Shoes" class="rounded-xl" />
+                    <img class="h-[200px]" src="${software?.thumbnail}" alt="Shoes" class="rounded-xl" />
                 </figure>
-                <div class="card-body items-center text-center">
-                    <h2 class="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary">Buy Now</button>
+                <div class="card-body">
+                    
+                    <div class="flex gap-4">
+                    <div>
+                    <img class="h-8 w-12 rounded-full" src="${software?.authors[0].profile_picture}" alt="">
+                    </div>
+                    <div>
+                    <h2 class="card-title">${software?.title?.slice(0,14)}</h2>
+                    <a>${software?.authors[0]?.profile_name}<span>${software.authors[0]?.verified ? '<img class="h-3 w-4 rounded-full" src="./images/varified.svg" alt=""></img>' : ""}</span></a>
+                    <p>${software?.others?.views}</p>
+                    
+                    </div>
                     </div>
                 </div>
                 </div>
