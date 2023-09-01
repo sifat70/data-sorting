@@ -32,9 +32,6 @@ const handleCategoryCard = async (categoryId) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = "";
 
-    // if(data.length === 0){
-    //     console.log('kam sarce');
-    // }
 
     if ((data.data).length > 0) {
         data.data.forEach((software) => {
@@ -50,7 +47,7 @@ const handleCategoryCard = async (categoryId) => {
                         <div class="relative">
                         <img class="h-12 w-12 rounded-full" src="${software?.authors[0].profile_picture}" alt="">
                         </div>
-                        <div class="absolute bg-black text-white left-[100px] top-[200px]">${secondsToHoursAndMinutes(software?.others?.posted_date)}</div>
+                        <div class="absolute bg-black text-white left-[80px] top-[200px]">${secondsToHoursAndMinutes(software?.others?.posted_date)}</div>
                         <div>
                         <h2 class="card-title">${software?.title?.slice(0, 14)}</h2>
                         <div class="flex"><a class="pr-2">${software?.authors[0]?.profile_name}</a> <a>${software.authors[0]?.verified ? '<img class="class="h-8 w-8 rounded-full" src="./images/varified.svg" alt=""></img>' : ""}</a></div>
@@ -68,6 +65,7 @@ const handleCategoryCard = async (categoryId) => {
         <div class="flex justify-center items-center">
         <img class="lg:ml-[1100px] md:ml-[450px] ml-[50px] mt-[20px] md:mt-[50px] lg:mt-[100px]" src="./images/Icon.png" alt="">
         </div>
+        <p class="mt-10 w-[80vh] lg:ml-[450px] text-3xl">Oops!! Sorry, There is no content here</p>
         `
         cardContainer.appendChild(div)
     }
@@ -79,19 +77,26 @@ const handleCategoryCard = async (categoryId) => {
 
 
 function secondsToHoursAndMinutes(seconds) {
-    const hours = Math.floor(seconds / 3600);
+    if (seconds <= 0) {
+        return "";
+    }else{
+        
+        const hours = Math.floor(seconds / 3600);
 
-    const remainingSeconds = seconds % 3600;
+        const remainingSeconds = seconds % 3600;
 
-    const minutes = Math.floor(remainingSeconds / 60);
+        const minutes = Math.floor(remainingSeconds / 60);
 
-    const set = `${hours} hours ${minutes} minutes ago`
+        const set = `${hours} hours ${minutes} minutes ago`
+        return set;
+    }
 
-
-    return set;
+    
 }
 
 
 
 
+
 handleCategory();
+handleCategoryCard('1000');
