@@ -9,6 +9,10 @@ const handleCategory = async () => {
     const categories = data.data;
     // console.log(categories);
 
+    
+    
+    
+
     categories.forEach((category) => {
         const div = document.createElement('div');
         div.innerHTML = `
@@ -28,7 +32,11 @@ const handleCategoryCard = async (categoryId) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = "";
 
-    if ((data.data).length > 0) {
+    // if(data.length === 0){
+    //     console.log('kam sarce');
+    // }
+
+    if ((data.data).length >0) {
         data.data.forEach((software) => {
             const div = document.createElement('div');
             div.innerHTML = `
@@ -44,7 +52,7 @@ const handleCategoryCard = async (categoryId) => {
                         </div>
                         <div class="absolute bg-black text-white left-[200px] top-[200px]">${software?.others?.posted_date}</div>
                         <div>
-                        <h2 class="card-title">${software?.title?.slice(0, 14)}</h2>
+                        <h2 class="card-title">${software?.title?.slice(0,14)}</h2>
                         <div class="flex"><a class="pr-2">${software?.authors[0]?.profile_name}</a> <a>${software.authors[0]?.verified ? '<img class="class="h-8 w-8 rounded-full" src="./images/varified.svg" alt=""></img>' : ""}</a></div>
                         <p>${software?.others?.views}</p>
                         </div>
@@ -54,7 +62,7 @@ const handleCategoryCard = async (categoryId) => {
             `;
             cardContainer.appendChild(div);
         })
-    } else {
+    }else{
         const div = document.createElement('div');
         div.innerHTML = `
         <img src="./images/Icon.png" alt="">
@@ -70,7 +78,7 @@ const handleCategoryCard = async (categoryId) => {
     //                 <img class="h-[200px]" src="${software?.thumbnail}" alt="Shoes" class="rounded-xl" />
     //             </figure>
     //             <div class="card-body">
-
+                    
     //                 <div class="flex gap-4">
     //                 <div class="relative">
     //                 <img class="h-12 w-12 rounded-full" src="${software?.authors[0].profile_picture}" alt="">
