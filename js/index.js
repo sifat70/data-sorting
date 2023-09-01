@@ -16,7 +16,7 @@ const handleCategory = async () => {
     categories.forEach((category) => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <a onclick="handleCategoryCard('${category.category_id}')" class="tab">${category.category}</a>
+        <button class="lg:mr-4 md:mr-3 mr-1  btn btn-outline btn-success"><a onclick="handleCategoryCard('${category.category_id}')" class="tab">${category.category}</a></button>
         `;
         categoryContainer.appendChild(div);
     })
@@ -65,7 +65,9 @@ const handleCategoryCard = async (categoryId) => {
     }else{
         const div = document.createElement('div');
         div.innerHTML = `
-        <img src="./images/Icon.png" alt="">
+        <div class="flex justify-center items-center">
+        <img class="lg:ml-[1100px] md:ml-[450px] ml-[50px] mt-[20px] md:mt-[50px] lg:mt-[100px]" src="./images/Icon.png" alt="">
+        </div>
         `
         cardContainer.appendChild(div)
     }
