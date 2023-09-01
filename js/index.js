@@ -26,6 +26,7 @@ const handleCategoryCard = async (categoryId) => {
     const data = await response.json();
 
     const cardContainer = document.getElementById('card-container');
+    cardContainer.innerHTML = "";
 
     data.data.forEach((software) => {
         const div = document.createElement('div');
@@ -38,13 +39,12 @@ const handleCategoryCard = async (categoryId) => {
                     
                     <div class="flex gap-4">
                     <div>
-                    <img class="h-8 w-12 rounded-full" src="${software?.authors[0].profile_picture}" alt="">
+                    <img class="h-12 w-12 rounded-full" src="${software?.authors[0].profile_picture}" alt="">
                     </div>
                     <div>
                     <h2 class="card-title">${software?.title?.slice(0,14)}</h2>
-                    <a>${software?.authors[0]?.profile_name}<span>${software.authors[0]?.verified ? '<img class="h-3 w-4 rounded-full" src="./images/varified.svg" alt=""></img>' : ""}</span></a>
+                    <span><a>${software?.authors[0]?.profile_name}</a><a>${software.authors[0]?.verified ? '<img class="class="h-10 w-10 rounded-full" src="./images/varified.svg" alt=""></img>' : ""}</a></span>
                     <p>${software?.others?.views}</p>
-                    
                     </div>
                     </div>
                 </div>
